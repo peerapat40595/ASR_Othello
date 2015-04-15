@@ -1,0 +1,10 @@
+แก้โปรแกรมแก้เฉพาะ .java เท่านั้น
+
+ลง JDK
+	set path ใน cmd โดย เข้าไปที่ Environment Variables
+	แก้ตรง PATH
+	เพิ่ม  C:\Program Files\Java\jdk1.8.0_40\bin
+	จะทำให้ compile java ได้
+วิธี compile โปรแกรม เข้าไปที่โฟลเดอร์ที่เก็บไฟล์
+	javac *.java โปรแกรมจะ compile เป็น .class ออกมา
+	jar -cvfm othello2.jar manifest.txt *.class *.gif

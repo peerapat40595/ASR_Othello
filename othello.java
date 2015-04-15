@@ -50,8 +50,8 @@ public class othello extends JPanel implements ActionListener, KeyListener
 		cmdSetNames.addActionListener(this);
 		cmdConfirm.addActionListener(this);
 
-		txtPlayerOne = new JTextField("Veerle", 10);
-		txtPlayerTwo = new JTextField("Natasja", 10);
+		txtPlayerOne = new JTextField("CP38", 10);
+		txtPlayerTwo = new JTextField("CP39", 10);
 
 		txtPlayerOne.addKeyListener(this);
 		txtPlayerTwo.addKeyListener(this);
@@ -108,10 +108,10 @@ public class othello extends JPanel implements ActionListener, KeyListener
 		panNameButton.setBackground(clrBlue);
 		panGameButtons.setBackground(clrBlue);
 
-		lblPlayerOne.setBackground(new Color(236,17,17)); //red
-		lblPlayerOne.setForeground(new Color(236,17,17));
-		lblPlayerTwo.setBackground(new Color(17,27,237)); //blue
-		lblPlayerTwo.setForeground(new Color(17,27,237));
+		lblPlayerOne.setBackground(new Color(0,0,0)); //white
+		lblPlayerOne.setForeground(new Color(0,0,0));
+		lblPlayerTwo.setBackground(new Color(255,255,255)); //black
+		lblPlayerTwo.setForeground(new Color(255,255,255));
 
 		panGameButtons.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 
