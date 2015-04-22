@@ -14,11 +14,11 @@ public class objChessBoard extends Canvas
 	public void paint (Graphics g)
 	{
 
-		g.setColor(new Color(75,141,221)); //Light blue
-		g.fillRect(0,0,500,50); //North border
+		g.setColor(new Color(255,209,170)); //Light blue
+		g.fillRect(0, 0, 500, 50); //North border
 		g.fillRect(0,0,50,500); //West border
 		g.fillRect(0,450,500,50); //South border
-		g.fillRect(450,0,50,500); //East border
+		g.fillRect(450, 0, 50, 500); //East border
 		
 		for (int row = 0; row < 8; row++)
 		{

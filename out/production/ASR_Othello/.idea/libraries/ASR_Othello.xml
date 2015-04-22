@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="ASR_Othello">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/othello2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/othello.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

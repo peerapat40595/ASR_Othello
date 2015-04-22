@@ -1,8 +1,12 @@
-//Author: ^-^ Veerle ^-^
+
+import com.sun.org.apache.xml.internal.utils.StringComparable;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.JOptionPane;
+import java.util.Scanner;
+
 
 public class othello extends JPanel implements ActionListener, KeyListener
 {
@@ -13,13 +17,14 @@ public class othello extends JPanel implements ActionListener, KeyListener
 	private JTextField txtPlayerOne, txtPlayerTwo;
 	private JLabel lblPlayerOne, lblPlayerTwo;
 	private JPanel panBottomHalf, panNameArea, panPlayerOne, panPlayerTwo, panNameButton, panGameButtons;
-	private Color clrBlue = new Color(75,141,221);
+	private Color clr = new Color(255,209,170);
 
 	public static void main(String[] args) //With applications, you have to specify a main method (not with applets)
 	{
 
-		JFrame.setDefaultLookAndFeelDecorated(true); //Make it look nice
-        JFrame frame = new JFrame("Othello Game"); //Title
+
+		//JFrame.setDefaultLookAndFeelDecorated(false); //Make it look nice
+        JFrame frame = new JFrame("ASR Othello Game"); //Title
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false); //Stops the user resizing the window
 
@@ -31,13 +36,106 @@ public class othello extends JPanel implements ActionListener, KeyListener
         frame.pack();
         frame.setVisible(true);
 
+
     }
+	int state=0;
+	int row=0;
+	int column=0;
+	private void HTK(final windowOthelloBoard mainOthelloBoard) {
+
+		new Thread(new Runnable() {
+			public void run() {
+				while (true) {
+
+					Scanner kb = new Scanner(System.in);
+					String a = kb.nextLine();
+					if(state == 0)
+					{
+						if (a.compareTo("reum") == 0) {
+							mainOthelloBoard.newGame();
+							state=1;
+						}
+
+					}
+					else if(state == 1)
+					{
+						row = 0; column = 0;
+						String[] parts = a.split(" ");
+						String c = parts[0];
+						String d = parts[1];
+						if (c.compareTo("one") == 0) {
+							row = 1;
+						}
+						else if(c.compareTo("two") == 0) {
+						    row = 2;
+						}
+						else if(c.compareTo("three") == 0) {
+							row = 3;
+						}
+						else if(c.compareTo("foure") == 0) {
+							row = 4;
+						}
+						else if(c.compareTo("five") == 0) {
+							row = 5;
+						}
+						else if(c.compareTo("six") == 0) {
+							row = 6;
+						}
+						else if(c.compareTo("seven") == 0) {
+							row = 7;
+						}
+						else if(c.compareTo("eight") == 0) {
+							row = 8;
+						}
+						if (d.compareTo("one") == 0) {
+							column = 1;
+						}
+						else if(d.compareTo("two") == 0) {
+							column = 2;
+						}
+						else if(d.compareTo("three") == 0) {
+							column = 3;
+						}
+						else if(d.compareTo("foure") == 0) {
+							column = 4;
+						}
+						else if(d.compareTo("five") == 0) {
+							column = 5;
+						}
+						else if(d.compareTo("six") == 0) {
+							column = 6;
+						}
+						else if(d.compareTo("seven") == 0) {
+							column = 7;
+						}
+						else if(d.compareTo("eight") == 0) {
+							column = 8;
+						}
+						if(row>=1 && column >=1)
+						{state=2;}
+
+					}
+					else if(state == 2)
+					{
+
+						if (a.compareTo("") == 0) {
+							mainOthelloBoard.newGame();
+							state = 2;
+						}
+					}
+
+				}
+			}
+		}).start();
+
+	}
 
 	public othello ()
 	{
 
 		this.setLayout(new BorderLayout());
 		mainOthelloBoard = new windowOthelloBoard();
+		HTK(mainOthelloBoard);
 		createImage = new objCreateAppletImage();
 
 		mainOthelloBoard.setSize(new Dimension(500, 500));
@@ -62,16 +160,16 @@ public class othello extends JPanel implements ActionListener, KeyListener
 		try
 		{
 
-			Image imgRed = createImage.getImage(this, "coinRed.gif", 200);
-			Image imgBlue = createImage.getImage(this, "coinBlue.gif", 200);
+			Image imgBlack = createImage.getImage(this, "coinBlack.gif", 10000);
+			Image imgWhite = createImage.getImage(this, "coinWhite.gif", 10000);
 			Image imgTile = createImage.getImage(this, "tile.gif", 200);
-			mainOthelloBoard.setupImages(imgRed, imgBlue, imgTile);
+			mainOthelloBoard.setupImages(imgBlack, imgWhite, imgTile);
 
 		}
 		catch (NullPointerException e)
 		{
 
-			JOptionPane.showMessageDialog(null, "Unable to load images. There should be coinRed.gif and coinBlue.gif in the same folder.", "Unable to load images", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Unable to load images. There should be coinBlack.gif and coinWhite.gif in the same folder.", "Unable to load images", JOptionPane.WARNING_MESSAGE);
 			cmdNewGame.setEnabled(false);
 			cmdSetNames.setEnabled(false);
 			cmdConfirm.setEnabled(false);
@@ -100,13 +198,13 @@ public class othello extends JPanel implements ActionListener, KeyListener
 				panGameButtons.add(cmdConfirm);
 				panGameButtons.add(cmdNewGame);
 
-		setBackground(clrBlue);
-		panBottomHalf.setBackground(clrBlue);
-		panNameArea.setBackground(clrBlue);
-		panPlayerOne.setBackground(clrBlue);
-		panPlayerTwo.setBackground(clrBlue);
-		panNameButton.setBackground(clrBlue);
-		panGameButtons.setBackground(clrBlue);
+		setBackground(clr);
+		panBottomHalf.setBackground(clr);
+		panNameArea.setBackground(clr);
+		panPlayerOne.setBackground(clr);
+		panPlayerTwo.setBackground(clr);
+		panNameButton.setBackground(clr);
+		panGameButtons.setBackground(clr);
 
 		lblPlayerOne.setBackground(new Color(0,0,0)); //white
 		lblPlayerOne.setForeground(new Color(0,0,0));
@@ -125,12 +223,12 @@ public class othello extends JPanel implements ActionListener, KeyListener
 
 			if (txtPlayerOne.getText().equals(""))
 			{
-				txtPlayerOne.setText("Veerle");
+				txtPlayerOne.setText("Player 1");
 			}
 
 			if (txtPlayerTwo.getText().equals(""))
 			{
-				txtPlayerTwo.setText("Natasja");
+				txtPlayerTwo.setText("Player 2");
 			}
 
 			mainOthelloBoard.setNames(txtPlayerOne.getText(), txtPlayerTwo.getText());

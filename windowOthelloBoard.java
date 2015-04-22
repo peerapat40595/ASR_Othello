@@ -1,4 +1,4 @@
-//Author: ^-^ Veerle ^-^
+
 import java.awt.*;
 import java.awt.event.*;
 //This programme extends the standard black and white 8 * 8 (64 cell) chess board
@@ -6,7 +6,7 @@ public class windowOthelloBoard extends objChessBoard implements MouseListener
 {
 	
 	private Image[] imgPlayer = new Image[2]; //Stores the coin images
-	private String[] strPlayerName = {"Veerle", "Natasja"}; //Stores the player names
+	private String[] strPlayerName = {"CP38", "CP39"}; //Stores the player names
 	private String strStatusMsg = ""; //Stores the current status msg to display
 	private objMoveCheck moveCheck = new objMoveCheck(); //Move checker and cell matrix
 	private int currentPlayer = 1, coinPlacedRow = 0, coinPlacedColumn = 0; //The current coin placement
@@ -28,7 +28,7 @@ public class windowOthelloBoard extends objChessBoard implements MouseListener
 		}
 		else if (firstTime) //Displays which player is which colour
 		{
-			strStatusMsg = "" + strPlayerName[0] + " you are red, " + strPlayerName[1] + " you are blue. Press new game to start";
+			strStatusMsg = "" + strPlayerName[0] + " you are black, " + strPlayerName[1] + " you are white. Press new game to start";
 		}
 		else //Normal move
 		{
